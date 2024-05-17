@@ -55,6 +55,9 @@ This is free software. It is released to the public domain without warranty.
 
 Thanks to [@jpillora][jpillora] and [@alanhogan][alanhogan] for updates and contributions.
 
+## Extension?
+
+Since they have this as an webpage which all of this may come to an end one day i will turn it into a chrome extension and done.
 
 [build-status]: https://secure.travis-ci.org/chriszarate/bookmarkleter.svg?branch=master
 [travis-ci]: http://travis-ci.org/chriszarate/bookmarkleter
