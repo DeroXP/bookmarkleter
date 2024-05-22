@@ -1,11 +1,8 @@
-const bookmarkleter = require( '../bookmarkleter' );
+const bookmarkleter = require('../bookmarkleter');
 
-exports.transpile = test => {
+exports.transpile = (test, {transpile = false} = {}) => {
   const data = [
-    [
-      'const getMessage = () => "Hello World";',
-      'javascript:%22use%20strict%22;const%20getMessage=()=%3E%22Hello%20World%22;'
-    ],
+    ['const getMessage = () => "Hello World";', 'javascript:%22use%20strict%22;const%20getMessage=()=%3E%22Hello%20World%22;'],
     [
       `// this is a comment
       const getMessage = () => "Hello World";`,
@@ -27,11 +24,11 @@ exports.transpile = test => {
   ];
 
   // transpile: true
-  data.forEach( ( [ input, output ] ) => test.equal( bookmarkleter( input, { transpile: true } ), output ) );
+  data.forEach(([input, output]) => test.equal(bookmarkleter(input, {transpile}), output));
 
   // transpile: false (default)
-  data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input, { transpile: false } ), output ) );
-  data.forEach( ( [ input, output ] ) => test.notEqual( bookmarkleter( input ), output ) );
+  data.forEach(([input, output]) => test.notEqual(bookmarkleter(input, {transpile: false}), output));
+  data.forEach(([input, output]) => test.notEqual(bookmarkleter(input), output));
 
   test.done();
 };
