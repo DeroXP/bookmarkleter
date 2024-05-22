@@ -1,16 +1,18 @@
-language: node_js
+language: nodejs
 
-node_js:
-  - 6
-  - 8
-  - 10
+nodejs:
+  - 12
+  - 14
 
 env:
   global:
-    - CODECOV_TOKEN="abb0203e-ecc3-4b54-b0aa-9d8a1fee1289"
+    - NODE_ENV: test
+    - CODECOV_TOKEN: "abb0203e-ecc3-4b54-b0aa-9d8a1fee1289"
 
 before_script:
-  - npm install -g codecov
+  - npm install -g npm@latest
+  - npm install
 
 after_script:
-  - codecov
+  - npm test && npm run coverage
+  - if [ -f coverage/coverage-final.json ]; then codecov; fi
