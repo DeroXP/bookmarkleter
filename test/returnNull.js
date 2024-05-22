@@ -10,9 +10,21 @@ exports.returnNull = test => {
     '({})',
     'true',
     '12345',
+    'function',
+    'var',
+    'let',
+    'const',
+    'null',
+    'undefined',
+    'this',
+    'class',
+    'export',
+    'import',
   ];
 
-  data.forEach( input => test.equal( bookmarkleter( input, { mangleVars: true } ), null ) );
+  test.each(data)(`bookmarkleter(%p) should return null`, (input) => {
+    test.equal(bookmarkleter(input, { mangleVars: true }), null);
+  });
 
   test.done();
 };
